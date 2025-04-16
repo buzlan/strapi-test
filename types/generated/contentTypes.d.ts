@@ -369,61 +369,65 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiMainPageMainPage extends Struct.SingleTypeSchema {
-  collectionName: 'main_pages';
+export interface ApiAboutUsAboutUs extends Struct.SingleTypeSchema {
+  collectionName: 'about_uses';
   info: {
-    displayName: 'MainPage';
-    pluralName: 'main-pages';
-    singularName: 'main-page';
+    displayName: 'AboutUs';
+    pluralName: 'about-uses';
+    singularName: 'about-us';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    content: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    images: Schema.Attribute.Media<'images' | 'files', true> &
-      Schema.Attribute.Required;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::main-page.main-page'
+      'api::about-us.about-us'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiNewsItemNewsItem extends Struct.CollectionTypeSchema {
-  collectionName: 'news_items';
+export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'articles';
   info: {
-    description: '';
-    displayName: 'NewsItem';
-    pluralName: 'news-items';
-    singularName: 'news-item';
+    displayName: 'Article';
+    pluralName: 'articles';
+    singularName: 'article';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    content: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
-    img: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::news-item.news-item'
+      'api::article.article'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -939,8 +943,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::main-page.main-page': ApiMainPageMainPage;
-      'api::news-item.news-item': ApiNewsItemNewsItem;
+      'api::about-us.about-us': ApiAboutUsAboutUs;
+      'api::article.article': ApiArticleArticle;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
