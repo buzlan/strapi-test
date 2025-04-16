@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_texts_reusable_texts",
+  "info": {
+    "displayName": "ReusableText",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "textData": {
+      "type": "blocks"
+    }
+  }
+}

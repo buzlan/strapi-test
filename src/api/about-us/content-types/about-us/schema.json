@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-us",
     "pluralName": "about-uses",
-    "displayName": "AboutUs"
+    "displayName": "AboutUs",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,14 +15,20 @@
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "reusableText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "texts.reusable-text"
     }
   }
 }
